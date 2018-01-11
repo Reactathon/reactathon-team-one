@@ -15,7 +15,7 @@
   flex-direction: column;
 }
 
-.submit-button {
+.room-button, .submit-button {
   margin: 1em;
   width: 15em;
   height: 5em;
