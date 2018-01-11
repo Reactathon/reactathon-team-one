@@ -28,7 +28,7 @@ class InputColumn extends React.Component {
     this.state = {
       title: '',
       attendees: ''
-    }
+    };
   }
 
   handleInputChange(event) {
@@ -49,6 +49,9 @@ class InputColumn extends React.Component {
       start: new Date(this.state.start),
       end: new Date(this.state.end)
     });
+  }
+  componentWillReceiveProps(props){
+    console.log(props);
   }
 
   render() {
@@ -75,43 +78,40 @@ class InputColumn extends React.Component {
             <label>{start}</label>
           ) : (
             <FormControl fullWidth>
-            <TextField
-              id="datetime-local"
-              label="Next appointment"
-              name="start"
-              onChange={this.handleInputChange}
-              type="datetime-local"
-              InputLabelProps={{
-                shrink: true
-              }}
-            />
-          </FormControl>
-          )} 
-         {end !== undefined && end !== null ? (
+              <TextField
+                id="datetime-local"
+                label="Next appointment"
+                name="start"
+                onChange={this.handleInputChange}
+                type="datetime-local"
+                InputLabelProps={{
+                  shrink: true
+                }}
+              />
+            </FormControl>
+          )}
+          {end !== undefined && end !== null ? (
             <label>{end}</label>
           ) : (
             <FormControl fullWidth>
-            <TextField
-              id="datetime-local"
-              label="Next appointment"
-              name="end"
-              onChange={this.handleInputChange}
-              type="datetime-local"
-              InputLabelProps={{
-                shrink: true
-              }}
-            />
-          </FormControl>
-          )}  
-          
+              <TextField
+                id="datetime-local"
+                label="Next appointment"
+                name="end"
+                onChange={this.handleInputChange}
+                type="datetime-local"
+                InputLabelProps={{
+                  shrink: true
+                }}
+              />
+            </FormControl>
+          )}
 
           {attendees !== undefined && attendees !== null ? (
             <label># of Attendees: {attendees}</label>
           ) : (
             <FormControl fullWidth>
-              <InputLabel>
-                # of Attendees:
-              </InputLabel>
+              <InputLabel># of Attendees:</InputLabel>
               <Input
                 fullWidth
                 name="attendees"
@@ -123,14 +123,11 @@ class InputColumn extends React.Component {
           {room !== undefined && room !== null ? (
             <label>Room: {room}</label>
           ) : null}
-
+          {this.props.selectedRoom !== undefined && this.props.selectedRoom !== null && this.props.selectedRoom !== ""?
+          <label>{this.props.selectedRoom}</label> : null}
           <CardActions>
             <MapDialog />
-            <Button
-              raised
-              color="primary"
-              onClick={this.handleSubmit}
-            >
+            <Button raised color="primary" onClick={this.handleSubmit}>
               Submit
             </Button>
           </CardActions>
@@ -166,7 +163,8 @@ const mapStateToProps = state => {
         state.selectedMeeting.attendees === undefined
           ? undefined
           : state.selectedMeeting.attendees
-    }
+    },
+    selectedRoom: state.selectedRoom
   };
 };
 
