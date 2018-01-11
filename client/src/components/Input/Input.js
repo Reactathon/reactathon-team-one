@@ -9,7 +9,7 @@ import TextField from 'material-ui/TextField';
 import MapDialog from '../../components/MapDialog/MapDialog';
 import { addMeeting } from '../../actions/meetingActions';
 
-import './Input.css';
+// import './Input.css';
 
 const dateOptions = {
   weekday: 'long',
@@ -41,7 +41,7 @@ class InputColumn extends React.Component {
     this.props.addMeeting({
       title: this.state.title,
       attendees: this.state.attendees,
-      organiser: "Spongebob Squarepants"
+      organiser: 'Spongebob Squarepants'
     });
   }
 
@@ -50,15 +50,17 @@ class InputColumn extends React.Component {
     return (
       <Card>
         <CardContent>
-          <FormControl fullWidth>
-            <InputLabel htmlFor="amount">Name of Meeting:</InputLabel>
-            {title !== undefined && title !== null ? (
+          {title !== undefined && title !== null ? (
             <label>{title}</label>
           ) : (
-            <Input fullWidth value={title !== undefined && title !== null ? title : ''} />
+            <FormControl fullWidth>
+              <InputLabel htmlFor="amount">Name of Meeting:</InputLabel>
+              <Input
+                fullWidth
+                value={title !== undefined && title !== null ? title : ''}
+              />
+            </FormControl>
           )}
-            
-          </FormControl>
 
           <label className="time-label">Time:</label>
           <FormControl fullWidth>
@@ -67,7 +69,7 @@ class InputColumn extends React.Component {
               label="Next appointment"
               type="datetime-local"
               InputLabelProps={{
-                shrink: true,
+                shrink: true
               }}
             />
           </FormControl>
@@ -77,24 +79,38 @@ class InputColumn extends React.Component {
               label="Next appointment"
               type="datetime-local"
               InputLabelProps={{
-                shrink: true,
+                shrink: true
               }}
             />
           </FormControl>
 
-          <FormControl fullWidth>
-            <InputLabel htmlFor="attendees" className="attendees-label"># of Attendees:</InputLabel>
-            {attendees !== undefined && attendees !== null ? (
-            <label>{attendees}</label>
+          {attendees !== undefined && attendees !== null ? (
+            <label># of Attendees: {attendees}</label>
           ) : (
-            <Input fullWidth value={attendees !== undefined && attendees !== null ? attendees : ''} />
+            <FormControl fullWidth>
+              <InputLabel htmlFor="attendees">
+                # of Attendees:
+              </InputLabel>
+              <Input
+                fullWidth
+                value={
+                  attendees !== undefined && attendees !== null ? attendees : ''
+                }
+              />
+            </FormControl>
           )}
-            
-          </FormControl>
+          {room !== undefined && room !== null ? (
+            <label>Room: {room}</label>
+          ) : null}
 
           <CardActions>
-            <MapDialog/>
-            <Button disabled={this.props.selectedMeeting !== {}} raised color="primary" onClick={this.handleSubmit}>
+            <MapDialog />
+            <Button
+              disabled={this.props.selectedMeeting !== {}}
+              raised
+              color="primary"
+              onClick={this.handleSubmit}
+            >
               Submit
             </Button>
           </CardActions>
