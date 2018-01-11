@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MapDialog from '../../components/MapDialog/MapDialog';
+import {addMeeting} from '../../actions/meetingActions';
 
 import './Input.css';
 
@@ -10,7 +11,9 @@ class InputColumn extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit() {}
+  handleSubmit() {
+    this.props.addMeeting(this.props.selectedMeeting)
+  }
 
   render() {
     const { title, start, end, attendees, room } = this.props.selectedMeeting;
@@ -67,4 +70,9 @@ const mapStateToProps = state => {
   };
 };
 
-export const InputColumnLink = connect(mapStateToProps)(InputColumn);
+const mapDispatchToProps = dispatch => {
+    return {
+        addMeeting: meeting => dispatch(addMeeting(meeting))
+    }
+}
+export const InputColumnLink = connect(mapStateToProps, mapDispatchToProps)(InputColumn);
