@@ -9,7 +9,7 @@ import TextField from 'material-ui/TextField';
 import MapDialog from '../../components/MapDialog/MapDialog';
 import { addMeeting } from '../../actions/meetingActions';
 
-// import './Input.css';
+import './Input.css';
 
 const dateOptions = {
   weekday: 'long',
@@ -57,10 +57,10 @@ class InputColumn extends React.Component {
   render() {
     const { title, start, end, attendees, room } = this.props.selectedMeeting;
     return (
-      <Card>
+      <Card className="card">
         <CardContent>
           {title !== undefined && title !== null ? (
-            <label>{title}</label>
+            <label className="title">{title}</label>
           ) : (
             <FormControl fullWidth>
               <InputLabel>Name of Meeting:</InputLabel>
@@ -75,7 +75,9 @@ class InputColumn extends React.Component {
 
           <label className="time-label">Time:</label>
           {start !== undefined && start !== null ? (
-            <label>{start}</label>
+            <div>
+            <label className="start-time">{start}</label><br/>
+            </div>
           ) : (
             <FormControl fullWidth>
               <TextField
@@ -108,7 +110,7 @@ class InputColumn extends React.Component {
           )}
 
           {attendees !== undefined && attendees !== null ? (
-            <label># of Attendees: {attendees}</label>
+            <label className="Attendees"># of Attendees: {attendees}</label>
           ) : (
             <FormControl fullWidth>
               <InputLabel># of Attendees:</InputLabel>
@@ -121,7 +123,7 @@ class InputColumn extends React.Component {
             </FormControl>
           )}
           {room !== undefined && room !== null ? (
-            <label>Room: {room}</label>
+            <label className="room">Room: {room}</label>
           ) : null}
           {this.props.selectedRoom !== undefined &&
           this.props.selectedRoom !== null &&

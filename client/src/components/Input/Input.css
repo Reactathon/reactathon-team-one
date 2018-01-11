@@ -1,0 +1,16 @@
+
+.card  .title{
+    display: block;
+  }
+
+.card  .time-lable {
+    display: block;
+  }
+
+  .card  .start-lable {
+      display: block;
+    }
+
+.card .Attendees {
+    display: block;
+}
