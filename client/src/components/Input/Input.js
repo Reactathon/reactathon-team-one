@@ -30,7 +30,6 @@ class InputColumn extends React.Component {
     const { title, start, end, attendees, room } = this.props.selectedMeeting;
     console.log(title);
     return (
-<<<<<<< HEAD
       <Card>
         <CardContent>
           <FormControl fullWidth>
@@ -73,49 +72,6 @@ class InputColumn extends React.Component {
           </CardActions>
         </CardContent>
       </Card>
-=======
-      <div className="input-container">
-        <label className="name-label">
-          Name of Meeting:
-          {title !== undefined && title !== null ? (
-            <label>{title}</label>
-          ) : (
-            <input type="text" />
-          )}
-        </label>
-        <label className="time-label">
-          Time:
-          <label className="from-label">
-            From:
-            {start !== undefined && start !== null ? (
-              <label>{start}</label>
-            ) : (
-              <input type="text" />
-            )}
-          </label>
-          <label className="to-label">
-            To:
-            {end !== undefined && end !== null ? (
-              <label>{end}</label>
-            ) : (
-              <input type="text" />
-            )}
-          </label>
-        </label>
-        <label className="attendees-label">
-          # of Attendees
-          {attendees !== undefined && attendees !== null ? (
-            <label>{attendees}</label>
-          ) : (
-            <input type="text" />
-          )}
-        </label>
-        <MapDialog />
-        <button className="submit-button" onClick={this.handleSubmit}>
-          Submit
-        </button>
-      </div>
->>>>>>> 36e4d5af7580df21860b5b927774006efbf32f1f
     );
   }
 }
