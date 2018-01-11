@@ -10,13 +10,13 @@ class InputColumn extends React.Component {
   // }
 
   render() {
-    const { name, start, end, attendees } = this.props.selectedMeeting;
+    const { title, start, end, attendees } = this.props.selectedMeeting;
     return (
       <div className="input-container">
         <label className="name-label">
           Name of Meeting:
-          {name !== undefined && name !== null ? (
-            <label>{name}</label>
+          {title !== undefined && title !== null ? (
+            <label>{title}</label>
           ) : (
             <input type="text" />
           )}
@@ -48,6 +48,7 @@ class InputColumn extends React.Component {
             <input type="text" />
           )}
         </label>
+        <button className="submit-button">Submit</button>
         <ButtonMap />
       </div>
     );
