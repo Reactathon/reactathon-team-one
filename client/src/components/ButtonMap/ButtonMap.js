@@ -1,16 +1,21 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react';
 
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 import RoomButton from '../RoomButton/RoomButton';
 
-import './ButtonMap.css'
+import './ButtonMap.css';
 
+import roomMap from './RoomMap.png';
+
+const buttonStyle = {
+    zIndex: 100,
+
+}
 
 class ButtonMap extends React.Component {
 
-
-    const getRooms = () =>
+    getRooms = () =>
             [
                 {"name": "Atrium" ,"x":336,"y":401,"w":144,"h":213},
                 {"name": "Bazaar" ,"x":769,"y":480,"w":227,"h":106},
@@ -28,6 +33,7 @@ class ButtonMap extends React.Component {
 
     render() {
         return (<div>
+                <img style={{zIndex: 0}} src={roomMap} />
                 {this.getRooms().map((roomData)=>{ return <RoomButton {...roomData} />})}
 
             </div>
@@ -36,4 +42,4 @@ class ButtonMap extends React.Component {
     }
 }
 
-export default RoomButton
+export default ButtonMap;

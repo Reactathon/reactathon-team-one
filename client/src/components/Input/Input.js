@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+<<<<<<< HEAD
 import Input, { InputLabel } from 'material-ui/Input';
 import { FormControl } from 'material-ui/Form';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
@@ -8,6 +9,10 @@ import TextField from 'material-ui/TextField';
 
 
 import MapDialog from '../../components/MapDialog/MapDialog'
+=======
+import MapDialog from '../../components/MapDialog/MapDialog';
+import {addMeeting} from '../../actions/meetingActions';
+>>>>>>> 36e4d5af7580df21860b5b927774006efbf32f1f
 
 import './Input.css';
 
@@ -17,12 +22,15 @@ class InputColumn extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit() {}
+  handleSubmit() {
+    this.props.addMeeting(this.props.selectedMeeting)
+  }
 
   render() {
     const { title, start, end, attendees, room } = this.props.selectedMeeting;
     console.log(title);
     return (
+<<<<<<< HEAD
       <Card>
         <CardContent>
           <FormControl fullWidth>
@@ -65,6 +73,49 @@ class InputColumn extends React.Component {
           </CardActions>
         </CardContent>
       </Card>
+=======
+      <div className="input-container">
+        <label className="name-label">
+          Name of Meeting:
+          {title !== undefined && title !== null ? (
+            <label>{title}</label>
+          ) : (
+            <input type="text" />
+          )}
+        </label>
+        <label className="time-label">
+          Time:
+          <label className="from-label">
+            From:
+            {start !== undefined && start !== null ? (
+              <label>{start}</label>
+            ) : (
+              <input type="text" />
+            )}
+          </label>
+          <label className="to-label">
+            To:
+            {end !== undefined && end !== null ? (
+              <label>{end}</label>
+            ) : (
+              <input type="text" />
+            )}
+          </label>
+        </label>
+        <label className="attendees-label">
+          # of Attendees
+          {attendees !== undefined && attendees !== null ? (
+            <label>{attendees}</label>
+          ) : (
+            <input type="text" />
+          )}
+        </label>
+        <MapDialog />
+        <button className="submit-button" onClick={this.handleSubmit}>
+          Submit
+        </button>
+      </div>
+>>>>>>> 36e4d5af7580df21860b5b927774006efbf32f1f
     );
   }
 }
@@ -80,4 +131,9 @@ const mapStateToProps = state => {
   };
 };
 
-export const InputColumnLink = connect(mapStateToProps)(InputColumn);
+const mapDispatchToProps = dispatch => {
+    return {
+        addMeeting: meeting => dispatch(addMeeting(meeting))
+    }
+}
+export const InputColumnLink = connect(mapStateToProps, mapDispatchToProps)(InputColumn);
