@@ -7,7 +7,9 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 BigCalendar.momentLocalizer(moment);
 
 const Calendar = ({meetings}) => (
+
     <BigCalendar
+      popup
       views={['month', 'day', 'agenda']}
       events={meetings}
       startAccessor='start'
