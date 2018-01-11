@@ -1,10 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Input, { InputLabel } from 'material-ui/Input';
+import { FormControl } from 'material-ui/Form';
+import Card, { CardActions, CardContent } from 'material-ui/Card';
+import Button from 'material-ui/Button';
+import TextField from 'material-ui/TextField';
+
+
 import MapDialog from '../../components/MapDialog/MapDialog'
 
 import './Input.css';
 
-const ButtonMap = () => <div>Buttons</div>;
 class InputColumn extends React.Component {
   constructor(props) {
     super(props);
@@ -15,66 +21,58 @@ class InputColumn extends React.Component {
 
   render() {
     const { title, start, end, attendees, room } = this.props.selectedMeeting;
-    console.log(this.props.selectedMeeting);
+    console.log(title);
     return (
-      <div className="input-container">
-        <label className="name-label">
-          Name of Meeting:
-          {title !== undefined && title !== null ? (
-            <label>{title}</label>
-          ) : (
-            <input type="text" />
-          )}
-        </label>
-        <label className="time-label">
-          Time:
-          <label className="from-label">
-            From:
-            {start !== undefined && start !== null ? (
-              <label>{start}</label>
-            ) : (
-              <input type="text" />
-            )}
-          </label>
-          <label className="to-label">
-            To:
-            {end !== undefined && end !== null ? (
-              <label>{end}</label>
-            ) : (
-              <input type="text" />
-            )}
-          </label>
-        </label>
-        <label className="attendees-label">
-          # of Attendees
-          {attendees !== undefined && attendees !== null ? (
-            <label>{attendees}</label>
-          ) : (
-            <input type="text" />
-          )}
-        </label>
-        <MapDialog/>
-        <button className="submit-button">Submit</button>
-        <label className="room-button-label">
-          Select Room
-          {room !== undefined && room !== null ? (
-            <label>{room}</label>
-          ) : (
-            <button className="room-button">Select Room</button>
-          )}
-        </label>
-        {this.props.selectedMeeting === {} ? (
-          <button className="submit-button" onClick={this.handleSubmit}>
-            Submit
-          </button>
-        ) : (
-          <div />
-        )}
-        <ButtonMap />
-      </div>
+      <Card>
+        <CardContent>
+          <FormControl fullWidth>
+            <InputLabel htmlFor="amount">Name of Meeting:</InputLabel>
+            <Input fullWidth value={title !== undefined && title !== null ? title : ''} />
+          </FormControl>
+
+          <label className="time-label">Time:</label>
+          <FormControl fullWidth>
+            <TextField
+              id="datetime-local"
+              label="Next appointment"
+              type="datetime-local"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </FormControl>
+          <FormControl fullWidth>
+            <TextField
+              id="datetime-local"
+              label="Next appointment"
+              type="datetime-local"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </FormControl>
+
+          <FormControl fullWidth>
+            <InputLabel htmlFor="attendees" className="attendees-label"># of Attendees:</InputLabel>
+            <Input fullWidth value={attendees !== undefined && attendees !== null ? attendees : ''} />
+          </FormControl>
+
+          <CardActions>
+            <MapDialog/>
+            <Button disabled={this.props.selectedMeeting !== {}} raised color="primary" onClick={this.handleSubmit}>
+              Submit
+            </Button>
+          </CardActions>
+        </CardContent>
+      </Card>
     );
   }
 }
+
+//
+//   <MapDialog/>
+//
+//
 
 const mapStateToProps = state => {
   return {
