@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import MapDialog from '../../components/MapDialog/MapDialog'
 
 import './Input.css';
 
@@ -48,6 +49,7 @@ class InputColumn extends React.Component {
             <input type="text" />
           )}
         </label>
+        <MapDialog/>
         <button className="submit-button">Submit</button>
         <ButtonMap />
       </div>
