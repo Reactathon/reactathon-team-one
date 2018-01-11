@@ -1,1 +1,2 @@
 export const ADD_MEETING = 'ADD_MEETING'
+export const SELECTED_MEETING = 'SELECTED_MEETING';

@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+}
+
+.left-column {
+  flex: 2;
+  padding: 1em;
+}
+
+.right-column {
+  flex: 1;
+  padding: 1em;
+}

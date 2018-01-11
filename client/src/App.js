@@ -8,6 +8,7 @@ import {
 
 import Landing from './components/Landing/Landing.js'
 import Header from './components/Header/Header'
+import Home from './components/Home/Home';
 
 import About from './components/About/About'
 import SignIn from './components/SignIn/SignIn'
@@ -41,15 +42,13 @@ class App extends Component {
                 <Router>
                     <MuiThemeProvider theme={theme}>
                         <div className="App">
-                            <header className="App-header">
-                                <Header/>
-                            </header>
+                            <Header/>
                             <Switch>
                                 <Route path="/about" component={About}/>
                                 <Route path="/signin" component={SignIn}/>
                                 <Route path="/register" component={Register}/>
                                 <Route path="/profile/:id" component={Profile}/>
-                                <Route path="/" exact component={Landing}/>
+                                <Route path="/" exact component={Home}/>
                                 <AuthenticatedRoute path="/account-information" component={AccountInformation}/>
                                 <Route component={PageNotFound}/>
                             </Switch>
