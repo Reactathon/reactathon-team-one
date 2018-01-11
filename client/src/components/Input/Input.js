@@ -6,12 +6,16 @@ import './Input.css';
 
 const ButtonMap = () => <div>Buttons</div>;
 class InputColumn extends React.Component {
-  // constructor(props) {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-  // }
+  handleSubmit() {}
 
   render() {
-    const { title, start, end, attendees } = this.props.selectedMeeting;
+    const { title, start, end, attendees, room } = this.props.selectedMeeting;
+    console.log(this.props.selectedMeeting);
     return (
       <div className="input-container">
         <label className="name-label">
@@ -51,6 +55,21 @@ class InputColumn extends React.Component {
         </label>
         <MapDialog/>
         <button className="submit-button">Submit</button>
+        <label className="room-button-label">
+          Select Room
+          {room !== undefined && room !== null ? (
+            <label>{room}</label>
+          ) : (
+            <button className="room-button">Select Room</button>
+          )}
+        </label>
+        {this.props.selectedMeeting === {} ? (
+          <button className="submit-button" onClick={this.handleSubmit}>
+            Submit
+          </button>
+        ) : (
+          <div />
+        )}
         <ButtonMap />
       </div>
     );
