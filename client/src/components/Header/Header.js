@@ -5,6 +5,8 @@ import AppBar from 'material-ui/AppBar'
 import ToolBar from 'material-ui/Toolbar'
 import Button from 'material-ui/Button'
 
+import './Header.css'
+
 let name = "FirstName LastName"
 
 const Header = () => {
@@ -14,7 +16,7 @@ const Header = () => {
             <Link to="/">
               <Button>{name}</Button>
             </Link>
-            <Link to="/Rooms">
+            <Link to="/Rooms" className='roomsButton'>
               <Button>Rooms</Button>
             </Link>
           </ToolBar>
