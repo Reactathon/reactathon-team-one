@@ -39,7 +39,7 @@ class ButtonMap extends React.Component {
     render() {
         return (<div>
                 <img style={{height:finalHeight, width:finalWidth, top:0, left:0}} src={roomMap} width={finalWidth} height={finalHeight} />
-                {this.getRooms().map((roomData)=>{ return <RoomButton {...roomData} />})}
+                {this.getRooms().map((roomData)=>{ return <RoomButton key={roomData.name} {...roomData} />})}
 
             </div>
 

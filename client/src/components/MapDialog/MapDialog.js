@@ -39,10 +39,7 @@ class MapDialog extends React.Component {
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose}>
-              Atrium
-            </Button>
-            <Button onClick={this.handleClose}>
-              Bazar
+              Close
             </Button>
           </DialogActions>
         </Dialog>
