@@ -50,7 +50,7 @@ class InputColumn extends React.Component {
       end: new Date(this.state.end)
     });
   }
-  componentWillReceiveProps(props){
+  componentWillReceiveProps(props) {
     console.log(props);
   }
 
@@ -123,14 +123,20 @@ class InputColumn extends React.Component {
           {room !== undefined && room !== null ? (
             <label>Room: {room}</label>
           ) : null}
-          {this.props.selectedRoom !== undefined && this.props.selectedRoom !== null && this.props.selectedRoom !== ""?
-          <label>{this.props.selectedRoom}</label> : null}
-          <CardActions>
-            <MapDialog />
-            <Button raised color="primary" onClick={this.handleSubmit}>
-              Submit
-            </Button>
-          </CardActions>
+          {this.props.selectedRoom !== undefined &&
+          this.props.selectedRoom !== null &&
+          this.props.selectedRoom !== '' ? (
+            <label>{this.props.selectedRoom}</label>
+          ) : null}
+          {this.props.selectedMeeting.title === undefined ||
+          this.props.selectedMeeting.title === null ? (
+            <CardActions>
+              <MapDialog />
+              <Button raised color="primary" onClick={this.handleSubmit}>
+                Submit
+              </Button>
+            </CardActions>
+          ) : null}
         </CardContent>
       </Card>
     );
