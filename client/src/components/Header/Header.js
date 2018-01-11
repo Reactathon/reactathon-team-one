@@ -7,17 +7,14 @@ import Button from 'material-ui/Button'
 
 import './Header.css'
 
-let name = "FirstName LastName"
+let name = "Room Reserving System"
 
 const Header = () => {
     return(
         <AppBar>
           <ToolBar>
-            <Link to="/">
+            <Link className='title' to="/">
               <Button>{name}</Button>
-            </Link>
-            <Link to="/Rooms" className='roomsButton'>
-              <Button>Rooms</Button>
             </Link>
           </ToolBar>
         </AppBar>
