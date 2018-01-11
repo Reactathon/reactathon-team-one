@@ -25,6 +25,10 @@ class InputColumn extends React.Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.state = {
+      title: '',
+      attendees: ''
+    }
   }
 
   handleInputChange(event) {
@@ -41,7 +45,9 @@ class InputColumn extends React.Component {
     this.props.addMeeting({
       title: this.state.title,
       attendees: this.state.attendees,
-      organiser: 'Spongebob Squarepants'
+      organiser: 'Spongebob Squarepants',
+      start: new Date(this.state.start),
+      end: new Date(this.state.end)
     });
   }
 
@@ -54,10 +60,12 @@ class InputColumn extends React.Component {
             <label>{title}</label>
           ) : (
             <FormControl fullWidth>
-              <InputLabel htmlFor="amount">Name of Meeting:</InputLabel>
+              <InputLabel>Name of Meeting:</InputLabel>
               <Input
                 fullWidth
-                value={title !== undefined && title !== null ? title : ''}
+                name="title"
+                onChange={this.handleInputChange}
+                value={this.state.title}
               />
             </FormControl>
           )}
@@ -67,6 +75,8 @@ class InputColumn extends React.Component {
             <TextField
               id="datetime-local"
               label="Next appointment"
+              name="start"
+              onChange={this.handleInputChange}
               type="datetime-local"
               InputLabelProps={{
                 shrink: true
@@ -77,6 +87,8 @@ class InputColumn extends React.Component {
             <TextField
               id="datetime-local"
               label="Next appointment"
+              name="end"
+              onChange={this.handleInputChange}
               type="datetime-local"
               InputLabelProps={{
                 shrink: true
@@ -88,14 +100,14 @@ class InputColumn extends React.Component {
             <label># of Attendees: {attendees}</label>
           ) : (
             <FormControl fullWidth>
-              <InputLabel htmlFor="attendees">
+              <InputLabel>
                 # of Attendees:
               </InputLabel>
               <Input
                 fullWidth
-                value={
-                  attendees !== undefined && attendees !== null ? attendees : ''
-                }
+                name="attendees"
+                onChange={this.handleInputChange}
+                value={this.state.attendees}
               />
             </FormControl>
           )}
@@ -106,7 +118,6 @@ class InputColumn extends React.Component {
           <CardActions>
             <MapDialog />
             <Button
-              disabled={this.props.selectedMeeting !== {}}
               raised
               color="primary"
               onClick={this.handleSubmit}
