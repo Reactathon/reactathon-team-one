@@ -14,7 +14,7 @@ const finalWidth=1024;
 const finalHeight=333;
 const percent_width=finalWidth/origWidth;
 const percent_height=finalHeight/origHeight;
-const button_translate_x=22;
+const button_translate_x=25;
 const button_translate_y=68;
 
 class ButtonMap extends React.Component {
@@ -26,7 +26,7 @@ class ButtonMap extends React.Component {
                 {"name": "Coffee House" ,"x":1561*percent_width+button_translate_x,"y":511*percent_height+button_translate_y,"w":117*percent_width,"h":76*percent_height},
                 {"name": "Den" ,"x":125*percent_width+button_translate_x,"y":120*percent_height+button_translate_y,"w":116*percent_width,"h":81*percent_height},
                 {"name": "Forum" ,"x":618*percent_width+button_translate_x,"y":278*percent_height+button_translate_y,"w":303*percent_width,"h":115*percent_height},
-                {"name": "Galleria" ,"x":337*percent_width+button_translate_x,"y":97*percent_height+button_translate_y,"w":120*percent_width,"h":77*percent_height},
+                {"name": "Galleria" ,"x":337*percent_width+button_translate_x,"y":120*percent_height+button_translate_y,"w":97*percent_width,"h":77*percent_height},
                 {"name": "Garden" ,"x":1455*percent_width+button_translate_x,"y":2*percent_height+button_translate_y,"w":137*percent_width,"h":114*percent_height},
                 {"name": "Market" ,"x":1121*percent_width+button_translate_x,"y":157*percent_height+button_translate_y,"w":146*percent_width,"h":102*percent_height},
                 {"name": "Plaza" ,"x":1014*percent_width+button_translate_x,"y":458*percent_height+button_translate_y,"w":106*percent_width,"h":129*percent_height},

@@ -15,7 +15,7 @@ class RoomButton extends React.Component {
       height: this.props.h
     };
 
-    return <button label={this.props.name} style={style} />;
+    return <button style={style}> {this.props.name} </button>;
   }
 }
 
