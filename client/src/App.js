@@ -41,9 +41,7 @@ class App extends Component {
                 <Router>
                     <MuiThemeProvider theme={theme}>
                         <div className="App">
-                            <header className="App-header">
-                                <Header/>
-                            </header>
+                            <Header/>
                             <Switch>
                                 <Route path="/about" component={About}/>
                                 <Route path="/signin" component={SignIn}/>
