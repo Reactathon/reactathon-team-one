@@ -7,7 +7,7 @@ import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
 
 import MapDialog from '../../components/MapDialog/MapDialog';
-import { addMeeting } from '../../actions/meetingActions';
+import { addMeeting, selectMeeting } from '../../actions/meetingActions';
 
 // import './Input.css';
 
@@ -24,6 +24,7 @@ class InputColumn extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.state = {
       title: '',
@@ -39,6 +40,10 @@ class InputColumn extends React.Component {
     this.setState({
       [name]: value
     });
+  }
+
+  handleAdd() {
+    this.props.selectMeeting();
   }
 
   handleSubmit() {
@@ -136,7 +141,13 @@ class InputColumn extends React.Component {
                 Submit
               </Button>
             </CardActions>
-          ) : null}
+          ) : (
+            <CardActions>
+              <Button raised color="primary" onClick={this.handleAdd}>
+                New Meeting
+              </Button>
+            </CardActions>
+          )}
         </CardContent>
       </Card>
     );
@@ -176,6 +187,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    selectMeeting: () => dispatch(selectMeeting({})),
     addMeeting: meeting => dispatch(addMeeting(meeting))
   };
 };
