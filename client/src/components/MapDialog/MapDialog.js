@@ -28,6 +28,8 @@ class MapDialog extends React.Component {
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
+          fullWidth
+          maxWidth={false}
         >
           <DialogTitle>{"Please select a room?"}</DialogTitle>
           <DialogContent>
