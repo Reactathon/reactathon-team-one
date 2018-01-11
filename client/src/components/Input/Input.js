@@ -71,7 +71,10 @@ class InputColumn extends React.Component {
           )}
 
           <label className="time-label">Time:</label>
-          <FormControl fullWidth>
+          {start !== undefined && start !== null ? (
+            <label>{start}</label>
+          ) : (
+            <FormControl fullWidth>
             <TextField
               id="datetime-local"
               label="Next appointment"
@@ -83,7 +86,11 @@ class InputColumn extends React.Component {
               }}
             />
           </FormControl>
-          <FormControl fullWidth>
+          )} 
+         {end !== undefined && end !== null ? (
+            <label>{end}</label>
+          ) : (
+            <FormControl fullWidth>
             <TextField
               id="datetime-local"
               label="Next appointment"
@@ -95,6 +102,8 @@ class InputColumn extends React.Component {
               }}
             />
           </FormControl>
+          )}  
+          
 
           {attendees !== undefined && attendees !== null ? (
             <label># of Attendees: {attendees}</label>
