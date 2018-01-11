@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import MapDialog from '../../components/MapDialog/MapDialog'
+import MapDialog from '../../components/MapDialog/MapDialog';
 
 import './Input.css';
 
-const ButtonMap = () => <div>Buttons</div>;
 class InputColumn extends React.Component {
   constructor(props) {
     super(props);
@@ -53,24 +52,10 @@ class InputColumn extends React.Component {
             <input type="text" />
           )}
         </label>
-        <MapDialog/>
-        <button className="submit-button">Submit</button>
-        <label className="room-button-label">
-          Select Room
-          {room !== undefined && room !== null ? (
-            <label>{room}</label>
-          ) : (
-            <button className="room-button">Select Room</button>
-          )}
-        </label>
-        {this.props.selectedMeeting === {} ? (
-          <button className="submit-button" onClick={this.handleSubmit}>
-            Submit
-          </button>
-        ) : (
-          <div />
-        )}
-        <ButtonMap />
+        <MapDialog />
+        <button className="submit-button" onClick={this.handleSubmit}>
+          Submit
+        </button>
       </div>
     );
   }

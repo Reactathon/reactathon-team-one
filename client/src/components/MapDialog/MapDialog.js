@@ -6,6 +6,7 @@ import Dialog, {
   DialogContentText,
   DialogTitle,
 } from 'material-ui/Dialog';
+import ButtonMap from '../ButtonMap/ButtonMap';
 
 class MapDialog extends React.Component {
   state = {
@@ -31,7 +32,7 @@ class MapDialog extends React.Component {
           <DialogTitle>{"Please select a room?"}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              place image here
+              <ButtonMap/>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
